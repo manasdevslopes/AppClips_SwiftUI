@@ -50,7 +50,7 @@ extension ContentView {
       if settings.authorizationStatus == .ephemeral {
         scheduleCustomNotification1(for: exhibit)
       } else {
-        center.requestAuthorization(options: [.alert]) { granted, error in
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
           if granted {
             scheduleCustomNotification1(for: exhibit)
           }
@@ -63,9 +63,9 @@ extension ContentView {
     let content = UNMutableNotificationContent()
     content.title = exhibit.name
     content.body = "Learn more about \"\(exhibit.name)\" in the full City Museum app."
-    content.sound = .default
+    content.sound = UNNotificationSound(named: UNNotificationSoundName("NotificaitonSound.aiff")) // .default
     
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     
     UNUserNotificationCenter.current().add(request) { error in

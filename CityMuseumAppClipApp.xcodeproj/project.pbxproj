@@ -51,6 +51,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Model/Exhibit.swift,
+				NotificaitonSound.aiff,
 				SharedMedia.xcassets,
 				ViewModel/ExhibitViewModel.swift,
 			);
